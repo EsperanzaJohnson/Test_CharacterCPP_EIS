@@ -6,19 +6,16 @@
 #include "GameFramework/Character.h"
 #include "CharacterCPP.generated.h"
 
-//UCLASS()
+UCLASS()
 
 //Forward declarations
-class USpringArmComponent;
-class UCameraComponent;
-
-//Prevent creating BP directly from the class
-
-UCLASS(Abstract, NotBlueprintable)
+//class USpringArmComponent;
+//class UCameraComponent;
 
 class TEST_CHARACTERCPP_API ACharacterCPP : public ACharacter
 {
 	GENERATED_BODY()
+
 
 public:
 	// Sets default values for this character's properties
@@ -27,6 +24,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UPROPERTY(EditAnywhere, Category = "EnhancedInput");
+	class UInputMappingContext* InputMapping;
+
 
 public:	
 	// Called every frame

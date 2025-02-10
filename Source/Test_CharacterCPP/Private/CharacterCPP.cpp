@@ -2,19 +2,31 @@
 
 
 #include "CharacterCPP.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
-ACharacterCPP::ACharacterCPP()
+ACharacterCPP::ACharacterCPP() 
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	this->bUseControllerRotationPitch = false;
+	this->bUseControllerRotationYaw = false;
+	this->bUseControllerRotationRoll = false;
 }
+
 
 // Called when the game starts or when spawned
 void ACharacterCPP::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Super::BeginPlay();
+
+	check(GEngine != nullptr);
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Emerald, TEXT("CharacterCPP code is running!"));
 	
 }
 
