@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "InputActionValue.h"
 #include "CharacterCPP.generated.h"
 
 UCLASS()
@@ -16,6 +17,10 @@ class TEST_CHARACTERCPP_API ACharacterCPP : public ACharacter
 {
 	GENERATED_BODY()
 
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
+
+	class UCameraComponent* Camera;
+
 
 public:
 	// Sets default values for this character's properties
@@ -26,6 +31,19 @@ protected:
 	virtual void BeginPlay() override;
 	UPROPERTY(EditAnywhere, Category = "EnhancedInput");
 	class UInputMappingContext* InputMapping;
+
+	UPROPERTY(EditAnywhere, Category = "EnhancedInput");
+	class UInputAction* IA_Move;
+
+	UPROPERTY(EditAnywhere, Category = "EnhancedInput");
+	class UInputAction* IA_Jump;
+
+	UPROPERTY(EditAnywhere, Category = "EnhancedInput");
+	class UInputAction* IA_Look;
+
+	void MoveInput(const FInputActionValue& InputValue);
+	void LookInput(const FInputActionValue& InputValue);
+	void JumpInput();
 
 
 public:	
