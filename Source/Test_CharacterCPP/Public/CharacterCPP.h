@@ -9,10 +9,6 @@
 
 UCLASS()
 
-//Forward declarations
-//class USpringArmComponent;
-//class UCameraComponent;
-
 class TEST_CHARACTERCPP_API ACharacterCPP : public ACharacter
 {
 	GENERATED_BODY()
@@ -20,6 +16,10 @@ class TEST_CHARACTERCPP_API ACharacterCPP : public ACharacter
 	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
 
 	class UCameraComponent* Camera;
+
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
+
+	class USpringArmComponent* SpringArm;
 
 
 public:
