@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "CoinPickUp.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCoinPickUpDelegate);
+
 //Prevents needing to compile every time a change is made
 
 class UStaticMeshComponent;
@@ -17,8 +19,14 @@ class TEST_CHARACTERCPP_API ACoinPickUp : public AActor
 	GENERATED_BODY()
 	
 public:	
+
+	//Visible for BP
+	UPROPERTY(BlueprintAssignable, Category = "PickUp")
+	FOnCoinPickUpDelegate OnCoinPickUp;
+
 	// Sets default values for this actor's properties
 	ACoinPickUp();
+
 
 	UFUNCTION()
 	void OnBeginOverlapComponentEvent(

@@ -2,6 +2,7 @@
 
 
 #include "CoinPickUp.h"
+#include "GameFramework/Character.h"
 #include "Components/SphereComponent.h"
 
 
@@ -34,9 +35,21 @@ ACoinPickUp::ACoinPickUp()
 	MeshComponent->SetGenerateOverlapEvents(false);
 }
 
-void ACoinPickUp::OnBeginOverlapComponentEvent(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void ACoinPickUp::OnBeginOverlapComponentEvent(
+	UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, 
+	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	//If actor is not a character it will inmediately return/exit
+	if (!Cast<ACharacter>(OtherActor)) return;
 
+	//Will check if is bound, and will broadcast that coin has been picked up
+	if (OnCoinPickUp.IsBound())
+	{
+		OnCoinPickUp.Broadcast();
+	}
+
+
+	Destroy();
 }
 
 
