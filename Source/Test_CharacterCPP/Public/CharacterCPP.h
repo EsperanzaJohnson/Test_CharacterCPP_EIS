@@ -19,8 +19,8 @@ class TEST_CHARACTERCPP_API ACharacterCPP : public ACharacter
 
 	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
 
+	//Including this prevents from needing to compile at every change
 	class USpringArmComponent* SpringArm;
-
 
 public:
 	// Sets default values for this character's properties
@@ -52,5 +52,5 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	
 };

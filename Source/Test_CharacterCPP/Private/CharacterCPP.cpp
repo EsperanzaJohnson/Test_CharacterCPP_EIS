@@ -13,7 +13,7 @@
 ACharacterCPP::ACharacterCPP() 
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>("Spring Arm");
 	SpringArm->SetupAttachment(RootComponent);
@@ -40,11 +40,12 @@ void ACharacterCPP::BeginPlay()
 }
 
 // Called every frame
-void ACharacterCPP::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
+// Commented as we will not be using the Tick function at this time, thus improving performance
+//void ACharacterCPP::Tick(float DeltaTime)
+//{
+//	Super::Tick(DeltaTime);
+//
+//}
 
 // Called to bind functionality to input
 void ACharacterCPP::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
