@@ -9,6 +9,7 @@
 //Prevents needing to compile every time a change is made
 
 class UStaticMeshComponent;
+class USphereComponent;
 
 UCLASS()
 class TEST_CHARACTERCPP_API ACoinPickUp : public AActor
@@ -19,11 +20,19 @@ public:
 	// Sets default values for this actor's properties
 	ACoinPickUp();
 
+	UFUNCTION()
+	void OnBeginOverlapComponentEvent(
+		UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult );
+
 protected:
 	
 	//Allows BP to access/edit the property
-	UPROPERTY(EditDefaultsOnly, Category = "Coin PickUp");
+	UPROPERTY(EditDefaultsOnly, Category = "Coin PickUp")
 	TObjectPtr<UStaticMeshComponent> MeshComponent;
+
+	UPROPERTY(EditDefaultsOnly, Category="Coin PickUp")
+	TObjectPtr<USphereComponent> ColliderComponent;
 
 public:	
 	
