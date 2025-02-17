@@ -11,6 +11,10 @@ ACoinPickUp::ACoinPickUp()
 	//Creates and assigns, but does not attach
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("MeshComponent");
 	SetRootComponent(MeshComponent);
+	MeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	//Avoids checking for unnecessary calls
+	MeshComponent->SetCollisionResponseToAllChannels(ECR_Ignore);
+	MeshComponent->SetGenerateOverlapEvents(false);
 }
 
 
